@@ -3,581 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주중 매일 묵상: 열정을 넘어, 헤세드로</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        ivory: {
-                            50: '#fdfcf6',
-                            100: '#f4efe6',
-                            200: '#e8dfcf',
-                        },
-                        wood: {
-                            light: '#A67B5B',
-                            DEFAULT: '#8B5A2B',
-                            dark: '#654321',
-                        },
-                        emerald: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46',
-                            900: '#064e3b',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Noto Sans KR"', 'sans-serif'],
-                        serif: ['"Noto Serif KR"', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <title>빌드업교회 헤세드 주중 묵상</title>
     <style>
+        :root {
+            --bg-ivory: #FDFBF7;
+            --main-green: #2E8B57;
+            --wood-brown: #8B4513;
+            --text-dark: #333;
+            --light-border: #dcd7ce;
+        }
         body {
-            background-color: #fdfcf6;
-            color: #333;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-ivory);
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
         }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .day-card {
-            scroll-margin-top: 140px; 
-        }
-        .verse-bg {
-            background-image: radial-gradient(#8B5A2B 0.5px, transparent 0.5px);
-            background-size: 12px 12px;
-            background-color: #fdfcf6;
-        }
-        .quote-icon {
-            opacity: 0.1;
-            font-size: 4rem;
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            z-index: 0;
-        }
-        
-        /* 모바일 최적화 스와이프 슬라이드 갤러리 */
-        .slide-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 1rem;
-            padding-bottom: 1rem;
-            -webkit-overflow-scrolling: touch; 
-        }
-        .slide-item {
-            flex: 0 0 85%; /* 모바일에서 다음 장이 살짝 보이도록 설정 */
-            scroll-snap-align: center;
-            border-radius: 0.75rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            background-color: #f3f4f6; /* 이미지 로딩 전 배경 */
-        }
-        @media (min-width: 768px) {
-            .slide-item {
-                flex: 0 0 60%;
-            }
-        }
-        .slide-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* 부드러운 토스트 알림 */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
-            background-color: #064e3b;
-            color: #fff;
+        header {
             text-align: center;
-            border-radius: 9999px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            bottom: 30px;
-            font-size: 14px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-            opacity: 0;
-            transition: opacity 0.3s, bottom 0.3s, visibility 0.3s;
+            padding: 40px 0;
+            border-bottom: 2px solid var(--wood-brown);
         }
-        #toast.show {
-            visibility: visible;
-            opacity: 1;
-            bottom: 50px;
+        header h1 {
+            color: var(--wood-brown);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        header p {
+            color: var(--main-green);
+            font-weight: bold;
+        }
+        .devotional-card {
+            background: #fff;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--main-green);
+        }
+        h2 { color: var(--wood-brown); margin-top: 0; }
+        .sub-title { color: var(--main-green); font-weight: bold; margin-bottom: 10px; }
+        .section-title { font-weight: bold; color: var(--wood-brown); margin-top: 15px; display: block; }
+        .prayer-box {
+            background-color: #f0f7f4;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px solid var(--main-green);
+        }
+        .question-box {
+            background-color: #fdf5e6;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px dashed var(--wood-brown);
         }
     </style>
 </head>
-<body class="selection:bg-emerald-200 selection:text-emerald-900">
+<body>
 
-    <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-ivory-200">
-        <div class="max-w-3xl mx-auto px-4 py-4 flex flex-col gap-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2 text-emerald-800 font-bold text-lg md:text-xl font-serif">
-                    <i class="fa-solid fa-leaf text-wood"></i>
-                    <span>열정을 넘어, 헤세드로</span>
-                </div>
-                <div class="text-[10px] md:text-xs text-wood font-medium bg-ivory-100 px-3 py-1.5 rounded-full whitespace-nowrap">
-                    헤세드의 6가지 얼굴
-                </div>
-            </div>
-            
-            <nav class="flex overflow-x-auto hide-scrollbar gap-2 pb-1 snap-x">
-                <a href="#mon" class="snap-start shrink-0 px-4 py-2 rounded-full text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-100 hover:bg-emerald-600 hover:text-white transition-colors">월: 주도</a>
-                <a href="#tue" class="snap-start shrink-0 px-4 py-2 rounded-full text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-100 hover:bg-emerald-600 hover:text-white transition-colors">화: 끝까지</a>
-                <a href="#wed" class="snap-start shrink-0 px-4 py-2 rounded-full text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-100 hover:bg-emerald-600 hover:text-white transition-colors">수: 한결같음</a>
-                <a href="#thu" class="snap-start shrink-0 px-4 py-2 rounded-full text-sm font-medium bg-wood-light/10 text-wood-dark border border-wood-light/20 hover:bg-wood hover:text-white transition-colors">목: 그럼에도</a>
-                <a href="#fri" class="snap-start shrink-0 px-4 py-2 rounded-full text-sm font-medium bg-wood-light/10 text-wood-dark border border-wood-light/20 hover:bg-wood hover:text-white transition-colors">금: 징계</a>
-                <a href="#sat" class="snap-start shrink-0 px-4 py-2 rounded-full text-sm font-medium bg-wood-light/10 text-wood-dark border border-wood-light/20 hover:bg-wood hover:text-white transition-colors">토: 언약헌신</a>
-            </nav>
-        </div>
+<div class="container">
+    <header>
+        <h1>빌드업교회</h1>
+        <p>열정을 넘어, 헤세드로: 주중 묵상</p>
     </header>
 
-    <main class="max-w-3xl mx-auto px-4 py-8 space-y-12">
-        
-        <div class="text-center mb-10 mt-8 md:mt-12 px-2">
-            <p class="text-emerald-700 font-bold mb-2 tracking-widest text-sm">WEEKLY DEVOTIONAL</p>
-            <h1 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 font-serif leading-tight">
-                열정을 넘어, <span class="text-wood">헤세드로</span>
-            </h1>
-            <p class="text-gray-600 text-sm md:text-base break-keep leading-relaxed bg-ivory-100 p-5 rounded-2xl">
-                세상이 말하는 감정적이고 조건부적인 사랑의 한계를 깨고,<br>
-                자격 없는 자를 일방적으로 선택하여 끝까지 지키시는<br>
-                하나님의 강력한 언약 사랑, <strong>'헤세드'</strong>의 6가지 얼굴을 매일 묵상합니다.
-            </p>
+    <!-- 월요일: 주도적 사랑 -->
+    <div class="devotional-card">
+        <h2>월요일: 주도적 사랑</h2>
+        <div class="sub-title">"먼저 찾아오시는 하나님" (요한일서 4:10, 19)</div>
+        <p><strong>배경:</strong> 우리가 아직 죄인 되어 하나님과 원수 되었을 때, 하나님은 기다리지 않으시고 먼저 아들을 보내셨습니다.</p>
+        <p><strong>메시지:</strong> 인간의 사랑은 반응을 기다리지만, 하나님의 헤세드는 주도적입니다. 우리가 하나님을 찾기 전에 하나님이 먼저 우리를 찾으셨습니다.</p>
+        <p><strong>묵상:</strong> 마치 새벽에 배고파 우는 아이를 부모가 먼저 일어나 안아주듯, 하나님은 당신의 삶에 이미 먼저 찾아와 계십니다. 당신의 지난날을 돌아볼 때, 당신이 찾지 않았는데도 인도하신 하나님의 손길은 무엇입니까?</p>
+        <div class="question-box">
+            <span class="section-title">생각해보기</span>
+            1. 지금 내 삶의 자리에서 하나님이 먼저 다가와 주셨음을 느꼈던 순간은 언제인가요?<br>
+            2. 내가 먼저 다가가야 할 '잃어버린 양' 같은 이웃은 누구인가요?
         </div>
-
-        <article id="mon" class="day-card bg-white rounded-3xl shadow-sm border border-emerald-100 overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-full h-2 bg-emerald-500"></div>
-            
-            <div class="px-5 md:px-6 pt-8 pb-4">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold font-serif shadow-inner shrink-0">월</span>
-                    <h2 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">주도적 사랑: '먼저' 찾아오심</h2>
-                </div>
-                <p class="text-sm text-emerald-600 font-medium ml-13">Initiative Love</p>
-            </div>
-
-            <div class="mx-4 md:mx-6 p-5 rounded-2xl verse-bg border border-ivory-200 relative overflow-hidden mt-2">
-                <i class="fa-solid fa-quote-left quote-icon text-wood-light"></i>
-                <p class="relative z-10 font-serif text-base md:text-lg text-gray-800 leading-loose text-center break-keep">
-                    "사랑은 여기 있으니 우리가 하나님을 사랑한 것이 아니요 <strong class="text-emerald-700">하나님이 우리를 사랑하사</strong> 우리 죄를 속하기 위하여 화목제물로 그 아들을 보내셨음이라"
-                </p>
-                <p class="relative z-10 text-right mt-3 text-sm text-wood font-medium">- 요한일서 4:10 -</p>
-            </div>
-
-            <div class="p-5 md:p-6 space-y-7">
-                <div>
-                    <h3 class="text-base font-bold text-emerald-700 mb-2 flex items-center gap-2"><i class="fa-solid fa-book-open"></i> 말씀의 맥락</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base break-keep">
-                        사도 요한은 '참된 사랑의 기원'을 설명합니다. 세상의 사랑은 맹목적 열정이 서로 맞부딪힐 때(쌍방향) 시작되지만, 하나님의 사랑(헤세드)은 우리가 죄인 되어 방황하고 아무런 반응도 없을 때, 하나님 편에서 **'일방적으로 먼저 주도권을 쥐고 건너오신'** 선제적 사랑입니다.
-                    </p>
-                </div>
-
-                <div class="bg-ivory-50 p-5 rounded-xl border-l-4 border-emerald-400 text-sm md:text-base text-gray-700 break-keep leading-relaxed">
-                    <p class="font-bold mb-2 text-emerald-800 flex items-center"><i class="fa-solid fa-seedling text-emerald-500 mr-2"></i> 일상의 묵상</p>
-                    어린아이와 숨바꼭질을 해보신 적 있나요? 아이가 장롱 구석에 숨었다가 너무 깊이 숨어 길을 잃고 덜컥 겁이 나 울음을 터뜨립니다. 그때 부모는 "네가 먼저 나와!"라고 소리치지 않습니다. 무조건 부모가 먼저 다가가 문을 열고 아이를 품에 안아줍니다.
-                    <br><br>
-                    아담이 죄를 짓고 두려워 나무 사이에 숨었을 때, <strong>"아담아, 네가 어디 있느냐"</strong> 먼저 찾아오신 분이 하나님이십니다. 내 영혼이 길을 잃고 어둠 속에 숨어 있을 때조차, 하나님은 나를 포기하지 않으시고 십자가를 들고 '먼저' 찾아오셨습니다.
-                </div>
-
-                <div>
-                    <h3 class="text-base font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-question"></i> 적용 질문</h3>
-                    <ol class="list-decimal list-inside space-y-3 text-gray-700 text-sm md:text-base font-medium leading-relaxed break-keep">
-                        <li>내가 주님을 간절히 찾지 않았던 방황의 시기에도, 내 삶에 먼저 찾아와 개입하셨던 하나님의 은혜를 기억해 봅시다.</li>
-                        <li>주님이 내게 먼저 찾아오신 것처럼, 오늘 내가 자존심을 내려놓고 '먼저' 연락하거나 다가가야 할 사람은 누구입니까?</li>
-                    </ol>
-                </div>
-
-                <div class="bg-emerald-50 rounded-xl p-5 md:p-6 mt-4 text-center border border-emerald-100">
-                    <p class="text-emerald-900 font-serif text-sm md:text-base leading-relaxed break-keep">
-                        "주님, 자격 없는 저를 그저 사랑하시기로 결심하시고, 제가 어둠에 숨어있을 때 먼저 찾아와 주셔서 감사합니다. 먼저 받은 이 사랑으로, 오늘 저도 누군가에게 먼저 다가가는 용기를 주옵소서."
-                    </p>
-                </div>
-            </div>
-        </article>
-
-        <article id="tue" class="day-card bg-white rounded-3xl shadow-sm border border-emerald-100 overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-full h-2 bg-emerald-600"></div>
-            
-            <div class="px-5 md:px-6 pt-8 pb-4">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold font-serif shadow-inner shrink-0">화</span>
-                    <h2 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">영원한 책임: '끝까지' 사랑</h2>
-                </div>
-                <p class="text-sm text-emerald-600 font-medium ml-13">Love to the End</p>
-            </div>
-
-            <div class="mx-4 md:mx-6 p-5 rounded-2xl verse-bg border border-ivory-200 relative overflow-hidden mt-2">
-                <i class="fa-solid fa-quote-left quote-icon text-wood-light"></i>
-                <p class="relative z-10 font-serif text-base md:text-lg text-gray-800 leading-loose text-center break-keep">
-                    "유월절 전에 예수께서 자기가 세상을 떠나 아버지께로 돌아가실 때가 이른 줄 아시고 세상에 있는 자기 사람들을 사랑하시되 <strong class="text-emerald-700">끝까지 사랑하시니라</strong>"
-                </p>
-                <p class="relative z-10 text-right mt-3 text-sm text-wood font-medium">- 요한복음 13:1 -</p>
-            </div>
-
-            <div class="p-5 md:p-6 space-y-7">
-                <div>
-                    <h3 class="text-base font-bold text-emerald-700 mb-2 flex items-center gap-2"><i class="fa-solid fa-book-open"></i> 말씀의 맥락</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base break-keep">
-                        십자가를 앞둔 최후의 만찬 자리. 예수님은 가룟 유다가 자신을 팔고, 베드로가 부인하며, 모든 제자가 도망칠 것을 아셨습니다. 감정이 식으면 쉽게 이별을 뱉어내는 세상과 달리, 주님은 피로 사신 자녀들을 우주의 끝, 영원까지 책임지고 완벽히 품어내십니다.
-                    </p>
-                </div>
-
-                <div class="bg-ivory-50 p-5 rounded-xl border-l-4 border-emerald-500 text-sm md:text-base text-gray-700 break-keep leading-relaxed">
-                    <p class="font-bold mb-2 text-emerald-800 flex items-center"><i class="fa-solid fa-seedling text-emerald-500 mr-2"></i> 일상의 묵상</p>
-                    주일 설교에서 들은 로버트슨 맥퀼킨 총장의 감동적인 일화를 기억하십니까? 그는 치매에 걸린 아내를 온전히 돌보기 위해 영예로운 총장직을 내려놓으며 이렇게 말했습니다. <strong>"42년 전, '죽음이 두 사람을 갈라놓을 때까지' 사랑하겠다고 하나님 앞에서 서약하지 않았습니까?"</strong><br><br>
-                    우리가 영적 치매에 걸려 주님을 잊고 세상을 향해 달려갈 때조차, 예수님은 십자가 언약을 기억하시며 결코 우리를 포기하지 않으십니다. 한 번 잡은 손을 끝까지 놓지 않으시는 것, 그것이 헤세드의 두 번째 얼굴입니다.
-                </div>
-
-                <div>
-                    <h3 class="text-base font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-question"></i> 적용 질문</h3>
-                    <ol class="list-decimal list-inside space-y-3 text-gray-700 text-sm md:text-base font-medium leading-relaxed break-keep">
-                        <li>나의 실수와 잦은 넘어짐에도 불구하고 나를 '끝까지' 사랑하시며 책임지시는 주님을 묵상할 때, 내 마음의 두려움이 어떻게 사라지나요?</li>
-                        <li>관계가 힘들어 포기하고 싶었던 사람(가족, 구역원 등)을 주님의 '끝까지 사랑'으로 어떻게 품어볼 수 있을까요?</li>
-                    </ol>
-                </div>
-
-                <div class="bg-emerald-50 rounded-xl p-5 md:p-6 mt-4 text-center border border-emerald-100">
-                    <p class="text-emerald-900 font-serif text-sm md:text-base leading-relaxed break-keep">
-                        "저의 나약함과 배신할 냄새나는 발까지도 끝까지 씻기시며 사랑하시는 예수님. 저도 쉽게 낙심하며 사람을 포기하지 않고, 주님이 맡겨주신 관계를 끝까지 지켜낼 인내를 주옵소서."
-                    </p>
-                </div>
-            </div>
-        </article>
-
-        <article id="wed" class="day-card bg-white rounded-3xl shadow-sm border border-emerald-100 overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-full h-2 bg-emerald-700"></div>
-            
-            <div class="px-5 md:px-6 pt-8 pb-4">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold font-serif shadow-inner shrink-0">수</span>
-                    <h2 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">흔들림 없는 신실함: '한결같은' 사랑</h2>
-                </div>
-                <p class="text-sm text-emerald-600 font-medium ml-13">Steadfast Love</p>
-            </div>
-
-            <div class="mx-4 md:mx-6 p-5 rounded-2xl verse-bg border border-ivory-200 relative overflow-hidden mt-2">
-                <i class="fa-solid fa-quote-left quote-icon text-wood-light"></i>
-                <p class="relative z-10 font-serif text-base md:text-lg text-gray-800 leading-loose text-center break-keep">
-                    "우리는 미쁨이 없을지라도 <strong class="text-emerald-700">주는 항상 미쁘시니</strong> 자기를 부인하실 수 없으시리라"
-                </p>
-                <p class="relative z-10 text-right mt-3 text-sm text-wood font-medium">- 디모데후서 2:13 -</p>
-            </div>
-
-            <div class="p-5 md:p-6 space-y-7">
-                <div>
-                    <h3 class="text-base font-bold text-emerald-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-book-open"></i> 말씀의 맥락</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base break-keep">
-                        상대의 감정이나 상태에 따라 실시간으로 요동치는 세상의 사랑과 다릅니다. 헤세드는 흔들리는 피조물(나)에게 뿌리를 두지 않고, 회전하는 그림자도 없으신 **'하나님 자신의 신실하신 성품'**에 닻을 내린 굳건한 안정감입니다.
-                    </p>
-                </div>
-
-                <div class="bg-ivory-50 p-5 rounded-xl border-l-4 border-emerald-600 text-sm md:text-base text-gray-700 break-keep leading-relaxed">
-                    <p class="font-bold mb-2 text-emerald-800 flex items-center"><i class="fa-solid fa-seedling text-emerald-500 mr-2"></i> 일상의 묵상</p>
-                    거센 폭풍우가 치는 밤바다를 상상해 보십시오. 파도는 미친 듯이 요동치며 배를 뒤집을 듯 위협합니다. 우리의 감정과 삶의 상황은 이 파도처럼 매일 이랬다저랬다(미쁨이 없음) 요동칩니다. <br><br>
-                    하지만 절벽 위에 굳게 서 있는 등대는 파도에 휩쓸리지 않고 항상 같은 자리에서 빛을 비춥니다. 내가 은혜 충만할 때나, 죄의 유혹에 넘어져 괴로워할 때나 주님은 <strong>"나는 너를 계속 사랑한다. 항상 한결같이(미쁘게) 너를 사랑하기로 결심했다"</strong>고 말씀하시는 굳건한 등대이십니다.
-                </div>
-
-                <div>
-                    <h3 class="text-base font-bold text-emerald-800 mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-question"></i> 적용 질문</h3>
-                    <ol class="list-decimal list-inside space-y-3 text-gray-700 text-sm md:text-base font-medium leading-relaxed break-keep">
-                        <li>상황이 꼬이거나 내 감정이 바닥을 칠 때, 갈대처럼 하나님의 선하심을 쉽게 의심하지는 않나요?</li>
-                        <li>내 변덕스러운 감정이 아닌, 변함없이 한결같으신 '하나님의 신실하신 성품'에 소망의 닻을 내리기로 결단해 봅시다.</li>
-                    </ol>
-                </div>
-
-                <div class="bg-emerald-50 rounded-xl p-5 md:p-6 mt-4 text-center border border-emerald-100">
-                    <p class="text-emerald-900 font-serif text-sm md:text-base leading-relaxed break-keep">
-                        "저의 믿음과 마음은 비바람에 흔들리는 갈대와 같지만, 주님은 언제나 그 자리에서 빛을 비추시는 견고한 반석이십니다. 요동치는 내 감정이 아니라, 주님의 한결같음에 소망의 닻을 내리게 하소서."
-                    </p>
-                </div>
-            </div>
-        </article>
-
-        <article id="thu" class="day-card bg-white rounded-3xl shadow-sm border border-wood-light/30 overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-full h-2 bg-wood-light"></div>
-            
-            <div class="px-5 md:px-6 pt-8 pb-4">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-10 h-10 rounded-full bg-wood-light/20 text-wood-dark flex items-center justify-center font-bold font-serif shadow-inner shrink-0">목</span>
-                    <h2 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">배신을 이기는 은혜: '그럼에도 불구하고'</h2>
-                </div>
-                <p class="text-sm text-wood font-medium ml-13">In Spite of Love</p>
-            </div>
-
-            <div class="mx-4 md:mx-6 p-5 rounded-2xl verse-bg border border-ivory-200 relative overflow-hidden mt-2">
-                <i class="fa-solid fa-quote-left quote-icon text-wood-light"></i>
-                <p class="relative z-10 font-serif text-base md:text-lg text-gray-800 leading-loose text-center break-keep">
-                    "여호와께서 내게 이르시되 이스라엘 자손이 다른 신을 섬기고 건포도 과자를 즐길지라도 여호와가 그들을 사랑하나니 너는 또 가서 <strong class="text-wood">음녀가 된 그 여자를 사랑하라</strong> 하시기로"
-                </p>
-                <p class="relative z-10 text-right mt-3 text-sm text-wood font-medium">- 호세아 3:1 -</p>
-            </div>
-
-            <div class="p-5 md:p-6 space-y-7">
-                <div>
-                    <h3 class="text-base font-bold text-wood-dark mb-2 flex items-center gap-2"><i class="fa-solid fa-book-open"></i> 말씀의 맥락</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base break-keep">
-                        우리가 죄로 눈멀어 주님을 처참히 배반하고 제 길로 달아났을지라도, 상처 입고 피 흘리시면서까지 우리를 다시 부르시고 사랑을 돌이키지 않으시는 장엄한 인내의 깊이입니다. 음녀 고멜을 향한 무조건적인 사랑이 곧 나를 향한 헤세드입니다.
-                    </p>
-                </div>
-
-                <div class="bg-ivory-50 p-5 rounded-xl border-l-4 border-wood text-sm md:text-base text-gray-700 break-keep leading-relaxed">
-                    <p class="font-bold mb-2 text-wood-dark flex items-center"><i class="fa-solid fa-seedling text-wood mr-2"></i> 일상의 묵상</p>
-                    부모의 재산을 챙겨 가출한 뒤 허랑방탕하게 탕진한 탕자의 이야기를 떠올려 보세요. 거지가 되어 돌아오는 아들을 보며, 아버지는 "내 돈 어쨌냐!"고 따지지 않습니다. 오히려 체면을 버리고 뛰어 나가 냄새나는 아들을 끌어안고 입을 맞춥니다.<br><br>
-                    우리가 세상의 '건포도 과자(쾌락, 성공, 우상)'를 탐하며 하나님을 서운하게 배신할 때도, 하나님은 <strong>"그럼에도 불구하고 너는 내 사랑하는 자녀다"</strong>라며 비싼 대가(십자가)를 치르고 다시 우리를 안아주십니다. 세상에 이런 바보 같은 사랑은 없습니다.
-                </div>
-
-                <div>
-                    <h3 class="text-base font-bold text-wood-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-question"></i> 적용 질문</h3>
-                    <ol class="list-decimal list-inside space-y-3 text-gray-700 text-sm md:text-base font-medium leading-relaxed break-keep">
-                        <li>겉으로는 예배자지만, 속으로는 고멜이나 탕자처럼 세상을 향해 곁눈질하며 즐기는 나만의 '건포도 과자'는 무엇입니까?</li>
-                        <li>주님께 이런 어마어마한 배신을 용서받았다면, 오늘 내가 가정이나 직장에서 '그럼에도 불구하고' 품어주고 용서해야 할 사람은 누구입니까?</li>
-                    </ol>
-                </div>
-
-                <div class="bg-wood/5 rounded-xl p-5 md:p-6 mt-4 text-center border border-wood-light/20">
-                    <p class="text-wood-dark font-serif text-sm md:text-base leading-relaxed break-keep">
-                        "저의 추악한 영적 간음과 배신에도 불구하고, 저를 다시 자녀로 안아주신 은혜 앞에 엎드립니다. 저도 제게 상처 준 사람을 조건 없이 용서할 수 있는 예수님의 마음을 부어주소서."
-                    </p>
-                </div>
-            </div>
-        </article>
-
-        <article id="fri" class="day-card bg-white rounded-3xl shadow-sm border border-wood-light/30 overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-full h-2 bg-wood"></div>
-            
-            <div class="px-5 md:px-6 pt-8 pb-4">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-10 h-10 rounded-full bg-wood-light/20 text-wood-dark flex items-center justify-center font-bold font-serif shadow-inner shrink-0">금</span>
-                    <h2 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">사랑의 징계: 바로잡으시는 사랑</h2>
-                </div>
-                <p class="text-sm text-wood font-medium ml-13">Disciplining Love</p>
-            </div>
-
-            <div class="mx-4 md:mx-6 p-5 rounded-2xl verse-bg border border-ivory-200 relative overflow-hidden mt-2">
-                <i class="fa-solid fa-quote-left quote-icon text-wood-light"></i>
-                <p class="relative z-10 font-serif text-base md:text-lg text-gray-800 leading-loose text-center break-keep">
-                    "주께서 그 사랑하시는 자를 징계하시고 그가 받아들이시는 아들마다 채찍질하심이라... 징계는 다 받는 것이거늘 너희에게 없으면 <strong class="text-wood">사생자요 친아들이 아니니라</strong>"
-                </p>
-                <p class="relative z-10 text-right mt-3 text-sm text-wood font-medium">- 히브리서 12:6-8 -</p>
-            </div>
-
-            <div class="p-5 md:p-6 space-y-7">
-                <div>
-                    <h3 class="text-base font-bold text-wood-dark mb-2 flex items-center gap-2"><i class="fa-solid fa-book-open"></i> 말씀의 맥락</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base break-keep">
-                        세상의 무관심한 사랑은 상대를 바로잡으려 애쓰지 않고 그냥 버려둡니다. 하지만 하나님은 우리를 고통스럽게 하려는 것이 아니라, 영원한 파멸에서 건져 '거룩함에 참여하게' 하시려고 다듬으십니다. 징계는 하나님이 나를 참 자녀로 삼으셨다는 가장 확실한 사랑의 증거입니다.
-                    </p>
-                </div>
-
-                <div class="bg-ivory-50 p-5 rounded-xl border-l-4 border-wood text-sm md:text-base text-gray-700 break-keep leading-relaxed">
-                    <p class="font-bold mb-2 text-wood-dark flex items-center"><i class="fa-solid fa-seedling text-wood mr-2"></i> 일상의 묵상</p>
-                    어린아이가 멋모르고 차가 쌩쌩 달리는 도로로 막 뛰어들려고 합니다. 그때 부모는 "위험하니까 가지 마"라고 점잖게 말하지 않습니다. 아이의 팔이 빠질 정도로 거칠게 낚아채서 바닥에 나뒹굴게 만듭니다. 아이는 아프다고 울겠지만, 부모는 살리기 위해 그렇게 한 것입니다.<br><br>
-                    C.S. 루이스는 이를 <strong>'엄한 자비(Severe Mercy)'</strong>라고 불렀습니다. 지금 우리가 겪는 이해할 수 없는 고난과 질병, 실패는 하나님이 나를 버리셨다는 증거가 아니라, 죽음의 길로 가는 나를 멈춰 세우려는 강렬한 구조의 손길입니다.
-                </div>
-
-                <div>
-                    <h3 class="text-base font-bold text-wood-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-question"></i> 적용 질문</h3>
-                    <ol class="list-decimal list-inside space-y-3 text-gray-700 text-sm md:text-base font-medium leading-relaxed break-keep">
-                        <li>내 삶을 가로막은 실패나 답답한 광야의 시간이, 혹시 멸망으로 가던 나를 멈춰 세우신 하나님의 '엄한 자비(징계)'는 아니었나요?</li>
-                        <li>나를 바로잡으려는 고난 앞에서 원망하기보다, 주님의 품으로 즉시 돌이키는 겸손한 태도를 가지고 있습니까?</li>
-                    </ol>
-                </div>
-
-                <div class="bg-wood/5 rounded-xl p-5 md:p-6 mt-4 text-center border border-wood-light/20">
-                    <p class="text-wood-dark font-serif text-sm md:text-base leading-relaxed break-keep">
-                        "하나님, 제 삶의 가시밭길과 눈물 나는 징계조차도, 저를 살려 거룩하게 하시려는 치열한 사랑임을 깨닫습니다. 불평을 거두고 징계를 달게 받으며 주님께 돌이키게 하소서."
-                    </p>
-                </div>
-            </div>
-        </article>
-
-        <article id="sat" class="day-card bg-white rounded-3xl shadow-sm border border-wood-light/30 overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-full h-2 bg-wood-dark"></div>
-            
-            <div class="px-5 md:px-6 pt-8 pb-4">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-10 h-10 rounded-full bg-wood-light/20 text-wood-dark flex items-center justify-center font-bold font-serif shadow-inner shrink-0">토</span>
-                    <h2 class="text-lg md:text-xl font-bold text-gray-900 leading-tight">영원한 약속: '언약' 헌신</h2>
-                </div>
-                <p class="text-sm text-wood font-medium ml-13">Covenantal Love</p>
-            </div>
-
-            <div class="mx-4 md:mx-6 p-5 rounded-2xl verse-bg border border-iv0ry-200 relative overflow-hidden mt-2">
-                <i class="fa-solid fa-quote-left quote-icon text-wood-light"></i>
-                <p class="relative z-10 font-serif text-base md:text-lg text-gray-800 leading-loose text-center break-keep">
-                    "자기 아들을 아끼지 아니하시고 우리 모든 사람을 위하여 내주신 이가 어찌 <strong class="text-wood">그 아들과 함께 모든 것을 우리에게 주시지 아니하겠느냐</strong>"
-                </p>
-                <p class="relative z-10 text-right mt-3 text-sm text-wood font-medium">- 로마서 8:32 -</p>
-            </div>
-
-            <div class="p-5 md:p-6 space-y-7">
-                <div>
-                    <h3 class="text-base font-bold text-wood-dark mb-2 flex items-center gap-2"><i class="fa-solid fa-book-open"></i> 말씀의 맥락</h3>
-                    <p class="text-gray-700 leading-relaxed text-sm md:text-base break-keep">
-                        느낌이나 조건에 기초해 파기될 수 있는 가벼운 '계약(Contract)'이 아닙니다. 하나님은 전능하신 스스로를 언약 아래 꽁꽁 묶어두시고, 자기 아들(예수)의 피를 담보로 내어주시며 어떤 상황에서도 자기 백성을 버리지 않겠다고 명문화하신 거룩한 '언약(Covenant)'입니다.
-                    </p>
-                </div>
-
-                <div class="bg-ivory-50 p-5 rounded-xl border-l-4 border-wood text-sm md:text-base text-gray-700 break-keep leading-relaxed">
-                    <p class="font-bold mb-2 text-wood-dark flex items-center"><i class="fa-solid fa-seedling text-wood mr-2"></i> 일상의 묵상</p>
-                    '계약'은 상대방이 조건을 어기면 파기하면 그만입니다. 그러나 '언약'은 상대가 실패해도 내가 희생하여 그 책임을 덮어주는 것입니다. 진짜 부부의 결혼 서약이 계약이 아닌 언약인 이유입니다.<br><br>
-                    하나님은 아담이 언약을 깨뜨렸을 때 계약을 폐기하지 않으셨습니다. 오히려 자신의 독생자 예수를 십자가에 내어주어, 우리가 치러야 할 실패의 값을 대신 갚으시고 우리를 향한 맹세를 영원히 성취하셨습니다. 이것이 성경 전체를 관통하는 헤세드의 결정체, 바로 '십자가 사랑'입니다.
-                </div>
-
-                <div>
-                    <h3 class="text-base font-bold text-wood-dark mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-question"></i> 적용 질문</h3>
-                    <ol class="list-decimal list-inside space-y-3 text-gray-700 text-sm md:text-base font-medium leading-relaxed break-keep">
-                        <li>아들까지 아끼지 않고 십자가에 내어주신 이 견고한 언약 사랑을 생각할 때, 내 앞길에 대한 막연한 두려움이 어떻게 변하나요?</li>
-                        <li>교회 공동체와 가정 안에서, 나는 사람들과 조건적인 '계약' 관계를 맺고 있나요, 아니면 희생하고 덮어주는 '언약' 관계를 맺고 있나요?</li>
-                    </ol>
-                </div>
-
-                <div class="bg-wood/5 rounded-xl p-5 md:p-6 mt-4 text-center border border-wood-light/20">
-                    <p class="text-wood-dark font-serif text-sm md:text-base leading-relaxed break-keep">
-                        "십자가의 피로 영원한 언약을 맺으시고, 어떤 실패와 파국 속에서도 저를 포기하지 않으시는 은혜를 찬양합니다. 저의 삶과 가정도 조건을 따지는 계산이 아니라, 언약적인 희생과 사랑으로 세워지게 하소서."
-                    </p>
-                </div>
-            </div>
-        </article>
-
-        <section class="mt-16 mb-8 bg-gradient-to-br from-emerald-800 to-emerald-950 text-ivory-50 rounded-3xl p-8 text-center shadow-lg relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, #fdfcf6 1px, transparent 0); background-size: 24px 24px;"></div>
-            
-            <div class="relative z-10">
-                <h2 class="text-2xl font-bold mb-4 text-emerald-200 font-serif">주중 묵상을 마치며</h2>
-                <p class="text-base md:text-lg leading-relaxed font-light mb-8 break-keep">
-                    한 주간 매일 '헤세드'의 6가지 얼굴을 묵상하며<br class="hidden md:block"> 
-                    하나님의 강렬한 사랑에 뿌리를 내리신 성도님들을 축복합니다.<br><br>
-                    우리가 받은 이 압도적인 언약 사랑이<br class="hidden md:block">
-                    이제는 우리의 가정과 직장, 이웃을 향한 <br class="hidden md:block">
-                    <strong>'나의 작은 헤세드'</strong>로 매일매일 흘러가기를 간절히 기도합니다.
-                </p>
-                <button onclick="copyLink()" class="bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-full font-bold transition-all duration-300 text-sm md:text-base flex items-center justify-center gap-2 mx-auto shadow-md transform hover:-translate-y-0.5 active:scale-95 w-full md:w-auto">
-                    <i class="fa-solid fa-share-nodes"></i> 카카오톡으로 주중 묵상 나누기 (링크 복사)
-                </button>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-ivory-100 py-10 border-t border-ivory-200 mt-10">
-        <div class="max-w-3xl mx-auto px-6 text-center text-wood-dark/70 text-sm">
-            <p class="font-medium">© 2026 Build-up Church. All rights reserved.</p>
-            <p class="mt-3 font-serif break-keep leading-relaxed text-xs md:text-sm">"그의 영광의 풍성함을 따라... 지식에 넘치는 그리스도의 사랑을 알고 그 너비와 길이와 높이와 깊이가 어떠함을 깨달아 하나님의 모든 충만하신 것으로 너희에게 충만하게 하시기를 구하노라" (엡 3:16-19)</p>
-        </div>
-    </footer>
-
-    <div id="toast">
-        <div class="flex items-center gap-2">
-            <i class="fa-solid fa-circle-check text-emerald-300 text-lg"></i>
-            <span class="text-left leading-tight">주중 묵상 링크가 복사되었습니다.<br><span class="text-emerald-200 text-xs">원하는 곳에 붙여넣기 해주세요!</span></span>
+        <div class="prayer-box">
+            <span class="section-title">오늘의 기도</span>
+            주님, 제가 주님을 찾기 전 이미 저를 먼저 찾아오신 헤세드의 사랑에 감사합니다. 오늘 하루, 누군가에게 먼저 다가가는 주님의 사랑을 실천하게 하소서.
         </div>
     </div>
 
-    <script>
-        // 1. 모바일 친화적인 토스트 알림 기능 (alert 대체)
-        function showToast() {
-            const toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-        }
+    <!-- 화요일: 영원한 책임 -->
+    <div class="devotional-card">
+        <h2>화요일: 영원한 책임</h2>
+        <div class="sub-title">"끝까지 사랑하시는 하나님" (요한복음 13:1)</div>
+        <p><strong>배경:</strong> 예수님은 십자가의 고난을 앞두고도 제자들을 향한 사랑을 멈추지 않으셨습니다.</p>
+        <p><strong>메시지:</strong> 세상은 감정이 식으면 쉽게 돌아서지만, 헤세드는 영원한 책임입니다. 하나님은 당신을 포기하지 않으십니다.</p>
+        <p><strong>묵상:</strong> 로버트슨 맥퀼킨 총장이 치매에 걸린 아내를 끝까지 돌본 것처럼, 하나님은 당신을 '죽음이 갈라놓을 때까지'가 아니라 '영원까지' 품으십니다. 당신이 흔들릴 때도 하나님은 여전히 당신을 붙들고 계십니다.</p>
+        <div class="question-box">
+            <span class="section-title">생각해보기</span>
+            1. 나의 연약함 때문에 스스로를 포기하고 싶었던 적은 없나요?<br>
+            2. 나를 끝까지 사랑하시는 하나님을 신뢰함으로 내가 오늘 끝까지 인내해야 할 관계는 무엇인가요?
+        </div>
+        <div class="prayer-box">
+            <span class="section-title">오늘의 기도</span>
+            끝까지 사랑하시는 주님, 제가 변덕스러운 감정에 속아 스스로 포기하지 않게 하소서. 저를 영원까지 품어주시는 주님의 신실함을 믿고 오늘을 살게 하소서.
+        </div>
+    </div>
 
-        // 2. 링크 복사 기능
-        function copyLink() {
-            const url = window.location.href.split('#')[0]; // 해시태그 제거한 순수 URL
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(url).then(() => {
-                    showToast();
-                }).catch(err => {
-                    fallbackCopyTextToClipboard(url);
-                });
-            } else {
-                fallbackCopyTextToClipboard(url);
-            }
-        }
+    <!-- 수요일: 흔들림 없는 신실함 -->
+    <div class="devotional-card">
+        <h2>수요일: 흔들림 없는 신실함</h2>
+        <div class="sub-title">"한결같은 사랑" (디모데후서 2:13)</div>
+        <p><strong>배경:</strong> 인간은 미쁨(신실함)이 없을지라도, 하나님은 자기 성품을 부인하실 수 없기에 항상 신실하십니다.</p>
+        <p><strong>메시지:</strong> 당신의 사랑은 환경에 따라 변하지만, 하나님의 사랑은 하나님의 성품에 뿌리 내리고 있어 결코 변하지 않습니다.</p>
+        <p><strong>묵상:</strong> 밤하늘의 북극성은 항상 그 자리에 있습니다. 우리의 기분은 매일 변하지만, 하나님의 사랑은 북극성처럼 변함이 없습니다. 오늘의 상황이 어떠하든 그 변치 않는 사랑에 닻을 내립시다.</p>
+        <div class="question-box">
+            <span class="section-title">생각해보기</span>
+            1. 내 감정과 상황에 따라 하나님을 향한 신뢰가 흔들린 적은 없나요?<br>
+            2. 어떤 상황에서도 변하지 않는 주님의 사랑을 어떻게 내 일상에 적용할까요?
+        </div>
+        <div class="prayer-box">
+            <span class="section-title">오늘의 기도</span>
+            한결같은 주님, 상황에 따라 요동치는 제 마음을 붙잡아 주소서. 변하지 않는 하나님의 성품 위에 제 삶의 닻을 내리고 오늘을 평안히 살게 하소서.
+        </div>
+    </div>
 
-        function fallbackCopyTextToClipboard(text) {
-            var textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.top = "0";
-            textArea.style.left = "0";
-            textArea.style.position = "fixed";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            try {
-                var successful = document.execCommand('copy');
-                if(successful) {
-                    showToast();
-                }
-            } catch (err) {
-                console.error('링크 복사에 실패했습니다.', err);
-            }
-            document.body.removeChild(textArea);
-        }
+    <!-- 목요일: 배신을 이기는 은혜 -->
+    <div class="devotional-card">
+        <h2>목요일: 배신을 이기는 은혜</h2>
+        <div class="sub-title">"그럼에도 불구하고 사랑하시는 하나님" (호세아 3:1)</div>
+        <p><strong>배경:</strong> 음녀 고멜을 아내로 삼고 끝까지 사랑하라는 명령은, 배신하는 이스라엘을 품으시는 하나님의 헤세드를 보여줍니다.</p>
+        <p><strong>메시지:</strong> 우리가 주님을 배신하고 세상으로 달려갈 때도 하나님은 상처 입으시면서까지 우리를 기다리십니다.</p>
+        <p><strong>묵상:</strong> 자식이 감옥에 가도 부모는 그를 버리지 않고 오히려 보석금을 내고 꺼내옵니다. 하나님은 우리가 죄의 늪에 빠져 있을 때, 당신의 아들을 십자가에 내어주시는 화목제물로 우리를 사 오셨습니다.</p>
+        <div class="question-box">
+            <span class="section-title">생각해보기</span>
+            1. '그럼에도 불구하고' 나를 사랑하시는 하나님의 은혜를 언제 가장 깊이 경험했나요?<br>
+            2. 나에게 상처를 준 사람을 '그럼에도 불구하고' 용서할 수 있는 힘은 어디서 올까요?
+        </div>
+        <div class="prayer-box">
+            <span class="section-title">오늘의 기도</span>
+            배신을 이기는 은혜의 주님, 저의 죄악에도 불구하고 끝까지 저를 돌이키시는 사랑에 감사합니다. 저 또한 누군가를 품어주는 넓은 마음을 갖게 하소서.
+        </div>
+    </div>
 
-        // 4. 스크롤 시 해당 요일 탭 자동 하이라이트 (Intersection Observer)
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.day-card');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '-20% 0px -60% 0px', // 화면 중앙 부근 인식
-                threshold: 0
-            };
+    <!-- 금요일: 바로잡으시는 사랑 -->
+    <div class="devotional-card">
+        <h2>금요일: 바로잡으시는 사랑</h2>
+        <div class="sub-title">"사랑의 징계" (히브리서 12:6-7)</div>
+        <p><strong>배경:</strong> 주님은 사랑하시는 자를 징계하십니다. 이는 우리가 친아들이기에 주시는 사랑의 증거입니다.</p>
+        <p><strong>메시지:</strong> 고난은 무관심이 아닙니다. 하나님은 우리가 거룩함에 참여하게 하시려고 때로는 아프게 바로잡으십니다.</p>
+        <p><strong>묵상:</strong> 의사가 수술할 때 고통을 주지만 그것은 살리기 위함입니다. 당신의 삶에 닥친 어려움이 하나님이 당신을 사랑하신다는 증거임을 믿으십시오. 그 징계는 우리를 의의 길로 인도합니다.</p>
+        <div class="question-box">
+            <span class="section-title">생각해보기</span>
+            1. 최근 나를 힘들게 하는 상황이나 사건이 하나님이 나를 다듬으시는 과정일지도 모른다고 생각한 적 있나요?<br>
+            2. 하나님이 나를 바로잡으려 하실 때, 나는 어떻게 반응하고 있나요?
+        </div>
+        <div class="prayer-box">
+            <span class="section-title">오늘의 기도</span>
+            사랑의 징계를 주시는 주님, 고난 중에도 저를 포기하지 않고 다듬어 주심을 감사합니다. 이 훈련의 끝에 맺힐 의와 평강의 열매를 기대하며 오늘을 견디게 하소서.
+        </div>
+    </div>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // 모든 탭 초기화
-                        navLinks.forEach(link => {
-                            link.classList.remove('ring-2', 'ring-offset-2', 'ring-emerald-500', 'font-bold', 'opacity-100');
-                            link.classList.add('opacity-50');
-                        });
-                        
-                        const currentId = entry.target.getAttribute('id');
-                        const activeLink = document.querySelector(`nav a[href="#${currentId}"]`);
-                        
-                        if (activeLink) {
-                            // 활성화된 탭 스타일 적용
-                            activeLink.classList.remove('opacity-50');
-                            activeLink.classList.add('ring-2', 'ring-offset-2', 'ring-emerald-500', 'font-bold', 'opacity-100');
-                            // 모바일에서 활성화된 탭이 중앙에 오도록 스크롤
-                            activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                        }
-                    }
-                });
-            }, observerOptions);
+    <!-- 토요일: 영원한 약속 -->
+    <div class="devotional-card">
+        <h2>토요일: 영원한 약속</h2>
+        <div class="sub-title">"언약 헌신" (로마서 8:32)</div>
+        <p><strong>배경:</strong> 하나님은 자신의 성품을 담보로 우리와 영원한 언약을 맺으셨습니다.</p>
+        <p><strong>메시지:</strong> 하나님의 사랑은 느낌이나 유희가 아닙니다. 하나님 스스로를 묶어두신 거룩한 약속, '언약'입니다.</p>
+        <p><strong>묵상:</strong> 결혼 서약이 상황을 넘어 지켜지는 약속이듯, 하나님의 사랑은 상황을 초월한 언약입니다. 아들을 내어주기까지 하신 하나님께서 무엇인들 우리에게 주지 않으시겠습니까? 이 확신 위에 거하십시오.</p>
+        <div class="question-box">
+            <span class="section-title">생각해보기</span>
+            1. 하나님의 약속이 내 삶의 상황보다 크다는 사실을 오늘 어떻게 붙들 수 있을까요?<br>
+            2. 나도 하나님께 신실한 언약의 백성으로 살아가고 있는지 점검해 봅시다.
+        </div>
+        <div class="prayer-box">
+            <span class="section-title">오늘의 기도</span>
+            언약의 하나님, 아들까지 내어주신 주님의 약속을 붙듭니다. 어떤 상황 속에서도 저를 버리지 않으시는 그 언약 헌신을 신뢰하며 이번 주일을 기쁨으로 준비하게 하소서.
+        </div>
+    </div>
+</div>
 
-            cards.forEach(card => observer.observe(card));
-            
-            // 초기 상태 투명도 조절
-            navLinks.forEach(link => link.classList.add('opacity-50'));
-            if(navLinks.length > 0) {
-                navLinks[0].classList.remove('opacity-50');
-                navLinks[0].classList.add('opacity-100');
-            }
-        });
-    </script>
 </body>
 </html>
